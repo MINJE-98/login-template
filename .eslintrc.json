@@ -1,3 +1,96 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
+    }
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "class-methods-use-this": "off",
+    "react/no-unused-prop-types": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "type"],
+        "pathGroups": [
+          {
+            "pattern": "next",
+            "group": "builtin"
+          },
+          {
+            "pattern": "next/**",
+            "group": "builtin"
+          },
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "**/interface",
+            "group": "type"
+          },
+          {
+            "pattern": "**/interface/**",
+            "group": "type"
+          },
+          {
+            "pattern": "@**/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@**",
+            "group": "internal"
+          },
+          {
+            "pattern": "**",
+            "group": "external"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/no-cycle": "off",
+    "no-console": "error",
+    "prettier/prettier": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["node_modules/", ".next/*", "*.config.js"]
 }
