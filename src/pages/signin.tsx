@@ -1,12 +1,14 @@
-import { useState } from 'react';
+/* eslint-disable react/jsx-no-bind */
 import Router from 'next/router';
-import Layout from '@Components/layout';
+import { useState } from 'react';
+
 import Form from '@Components/form';
+import Layout from '@Components/layout';
 
 const Login = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
 
     if (errorMsg) setErrorMsg('');

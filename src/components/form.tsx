@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import LinkTo from '@Components/LinkTo';
 
-const Form = ({ isLogin, errorMessage, onSubmit }) => (
+const Form = ({ isLogin, errorMessage, onSubmit }: any) => (
   <form onSubmit={onSubmit}>
     <label>
       <span>Username</span>
@@ -20,16 +20,12 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
     <div className="submit">
       {isLogin ? (
         <>
-          <Link href="/signup">
-            <a>I don't have an account</a>
-          </Link>
+          <LinkTo href="/signup">계정이 없으신가요?</LinkTo>
           <button type="submit">Login</button>
         </>
       ) : (
         <>
-          <Link href="/login">
-            <a>I already have an account</a>
-          </Link>
+          <LinkTo href="/signup">이미 계정이 있어요!</LinkTo>
           <button type="submit">Signup</button>
         </>
       )}

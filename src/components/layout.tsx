@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import { ReactNode } from 'react';
 
-const Layout = (props) => (
+const Layout = ({ children }: { children: ReactNode }) => (
   <>
     <Head>
       <title>With Cookies</title>
@@ -9,7 +10,7 @@ const Layout = (props) => (
     {/* <Header /> */}
 
     <main>
-      <div className="container">{props.children}</div>
+      <div className="container">{children}</div>
     </main>
 
     <style jsx global>{`
