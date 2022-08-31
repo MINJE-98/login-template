@@ -1,10 +1,24 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 import styles from '../../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const { isSuccess, data } = useQuery('userInfo', () =>
+    axios.get('/api/user')
+  );
+  const handleLogout = () => {
+    axios.get('/api/signout');
+  };
+  const handleLogin = () => {
+    router.push('/signin');
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -51,6 +65,18 @@ const Home: NextPage = () => {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
+          {isSuccess && !data?.data.user ? (
+            <button type="button" onClick={handleLogin}>
+              로그인
+            </button>
+          ) : (
+            <div>
+              <p>{data?.data.user._id}</p>
+              <button type="button" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
+          )}
         </div>
       </main>
 
