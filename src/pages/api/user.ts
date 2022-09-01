@@ -16,7 +16,7 @@ handler.use(auth).get(
     res: NextApiResponse
   ) => {
     const { user } = req;
-    if (!user) return res.json({ user: null });
+    if (!user) return res.status(404).json({});
     return res.json({ user });
   }
 );
