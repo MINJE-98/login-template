@@ -1,11 +1,16 @@
+import { useAuth } from 'src/hooks/auth/AuthContext';
+
 import Form from '@Components/form';
 import Layout from '@Components/layout';
 
 const Login = () => {
+  const {
+    localLogin: { errorMsg, handleLogin },
+  } = useAuth();
   return (
     <Layout>
       <div className="login">
-        <Form isLogin />
+        <Form isLogin errorMessage={errorMsg} handleSubmit={handleLogin} />
       </div>
       <style jsx>{`
         .login {

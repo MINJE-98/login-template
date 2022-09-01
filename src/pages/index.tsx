@@ -8,7 +8,8 @@ import { useAuth } from 'src/hooks/auth/AuthContext';
 import styles from '../../styles/Home.module.css';
 
 const Home: NextPage = () => {
-  const { userInfo } = useAuth();
+  const { userInfo, handleLogout } = useAuth();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +19,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>🙃Welcome to {userInfo?.username}</h1>
+        <h1 className={styles.title}>
+          🙃Welcome to {userInfo && userInfo.username}
+        </h1>
+        <button type="button" onClick={handleLogout}>
+          로그아웃
+        </button>
       </main>
     </div>
   );

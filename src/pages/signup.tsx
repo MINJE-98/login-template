@@ -22,12 +22,10 @@ const Signup = () => {
 
     if (body.password !== e.currentTarget.password.value) {
       setErrorMsg(`The passwords don't match`);
-      return;
     }
-
     try {
-      const { data } = await axios.post('/api/signup', body);
-      if (data.status === 200) {
+      const result = await axios.post('/api/signup', body);
+      if (result.status === 200) {
         Router.push('/');
       }
     } catch (error) {
@@ -38,7 +36,11 @@ const Signup = () => {
   return (
     <Layout>
       <div className="login">
-        <Form isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} />
+        <Form
+          isLogin={false}
+          errorMessage={errorMsg}
+          handleSubmit={handleSubmit}
+        />
       </div>
       <style jsx>{`
         .login {

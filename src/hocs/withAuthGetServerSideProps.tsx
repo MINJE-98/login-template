@@ -2,6 +2,8 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 
 import axios from 'axios';
 
+import { SERVER_URL } from '@Environment';
+
 import UserInterface from '@Lib/db/interface/UserInterface';
 
 type IncomingGSSP<P> = (
@@ -22,15 +24,13 @@ export default function withAuthServerSideProps(
     try {
       const { headers } = ctx.req;
       const cookie = !headers.cookie ? '' : headers.cookie;
-      const { data } = await axios.get(
-        'https://login-template-fhb3yegsv-minje-98.vercel.app/api/user',
-        {
-          withCredentials: true,
-          headers: {
-            cookie,
-          },
-        }
-      );
+      const { data } = await axios.get(`${SERVER_URL}/api/user`, {
+        withCredentials: true,
+        headers: {
+          cookie,
+        },
+      });
+
       if (incomingGSSP) {
         const incomingGSSPResult = await incomingGSSP(ctx, data);
 

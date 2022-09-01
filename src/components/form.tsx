@@ -1,13 +1,8 @@
-import { useAuth } from 'src/hooks/auth/AuthContext';
-
 import LinkTo from '@Components/LinkTo';
 
-const Form = ({ isLogin }: any) => {
-  const {
-    localLogin: { errorMsg, handleLogin },
-  } = useAuth();
+const Form = ({ isLogin, errorMessage, handleSubmit }: any) => {
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleSubmit}>
       <label>
         <span>Username</span>
         <input type="text" name="username" required />
@@ -19,7 +14,7 @@ const Form = ({ isLogin }: any) => {
       {!isLogin && (
         <label>
           <span>Repeat password</span>
-          <input type="password" name="rpassword" required />
+          <input type="password" name="password" required />
         </label>
       )}
 
@@ -31,13 +26,13 @@ const Form = ({ isLogin }: any) => {
           </>
         ) : (
           <>
-            <LinkTo href="/signup">이미 계정이 있어요!</LinkTo>
+            <LinkTo href="/signin">이미 계정이 있어요!</LinkTo>
             <button type="submit">Signup</button>
           </>
         )}
       </div>
 
-      {errorMsg && <p className="error">{errorMsg}</p>}
+      {errorMessage && <p className="error">{errorMessage}</p>}
 
       <style jsx>{`
         form,

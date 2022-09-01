@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
 
 import axios from 'axios';
@@ -5,8 +6,9 @@ import axios from 'axios';
 import UserInterface from '@Lib/db/interface/UserInterface';
 
 const useLocalLogin = (
-  setUserInfo: Dispatch<SetStateAction<UserInterface>>
+  setUserInfo: Dispatch<SetStateAction<UserInterface | null>>
 ) => {
+  const router = useRouter();
   const [errorMsg, setErrorMsg] = useState('');
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,8 +22,10 @@ const useLocalLogin = (
 
     try {
       const res = await axios.post('/api/signin', body);
+
       if (res.status === 200) {
-        setUserInfo(res.data);
+        setUserInfo(res.data.user);
+        router.push('/');
       }
     } catch (error) {
       setErrorMsg('유저 이름 또는 비밀번호가 잘못됐습니다.');
