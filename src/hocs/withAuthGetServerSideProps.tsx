@@ -22,12 +22,15 @@ export default function withAuthServerSideProps(
     try {
       const { headers } = ctx.req;
       const cookie = !headers.cookie ? '' : headers.cookie;
-      const { data } = await axios.get('http://localhost:3000/api/user', {
-        withCredentials: true,
-        headers: {
-          cookie,
-        },
-      });
+      const { data } = await axios.get(
+        'https://login-template-fhb3yegsv-minje-98.vercel.app/api/user',
+        {
+          withCredentials: true,
+          headers: {
+            cookie,
+          },
+        }
+      );
       if (incomingGSSP) {
         const incomingGSSPResult = await incomingGSSP(ctx, data);
 
