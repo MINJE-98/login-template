@@ -2,6 +2,8 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 
+import axios from 'axios';
+import { useQuery } from 'react-query';
 import withAuthServerSideProps from 'src/hocs/withAuthGetServerSideProps';
 import { useAuth } from 'src/hooks/auth/AuthContext';
 
@@ -9,6 +11,7 @@ import styles from '../../styles/Home.module.css';
 
 const Home: NextPage = () => {
   const { userInfo, handleLogout } = useAuth();
+  const result = useQuery('userInfo', () => axios.get('/api/user'));
 
   return (
     <div className={styles.container}>
@@ -19,11 +22,17 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          🙃Welcome to {userInfo && userInfo.username}
-        </h1>
-        <button type="button" onClick={handleLogout}>
-          로그아웃
+        <h1 className={styles.title}>ServerSide</h1>
+        <h3>🙃Welcome {userInfo && userInfo.username}🙃</h3>
+        <h1 className={styles.title}>ClientSide</h1>
+        <h3>
+          {result.isLoading && <>loading....</>}
+          {result.isSuccess && (
+            <>🙃Welcome {result.data && result.data.data.user.username}🙃</>
+          )}
+        </h3>
+        <button type="button" onClick={handleLogout} className={styles.card}>
+          <h4>로그아웃</h4>
         </button>
       </main>
     </div>
