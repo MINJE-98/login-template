@@ -28,8 +28,10 @@ const Signup = () => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.log(error.response);
-        setErrorMsg(error.response?.data);
+        if (error.response) {
+          const { data } = error.response as any;
+          setErrorMsg(data);
+        }
       }
     }
   }
