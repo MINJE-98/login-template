@@ -18,18 +18,19 @@ const Signup = () => {
     const body = {
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
+      rpassword: e.currentTarget.rpassword.value,
     };
 
-    if (body.password !== e.currentTarget.password.value) {
-      setErrorMsg(`The passwords don't match`);
-    }
     try {
       const result = await axios.post('/api/signup', body);
       if (result.status === 200) {
         Router.push('/');
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) setErrorMsg(error.message);
+      if (axios.isAxiosError(error)) {
+        console.log(error.response);
+        setErrorMsg(error.response?.data);
+      }
     }
   }
 

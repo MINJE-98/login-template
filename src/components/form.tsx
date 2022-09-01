@@ -14,7 +14,7 @@ const Form = ({ isLogin, errorMessage, handleSubmit }: any) => {
       {!isLogin && (
         <label>
           <span>Repeat password</span>
-          <input type="password" name="password" required />
+          <input type="password" name="rpassword" required />
         </label>
       )}
 
