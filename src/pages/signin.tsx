@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 import axios from 'axios';
 import { useAuth } from 'src/hooks/auth/context/AuthContext';
@@ -14,6 +15,10 @@ const SignIn = () => {
   } = useAuth();
   return (
     <Layout>
+      <Head>
+        <title>로그인</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="login">
         <Form isLogin errorMessage={errorMsg} handleSubmit={handleSignIn} />
       </div>

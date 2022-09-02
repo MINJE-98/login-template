@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { useAuth } from 'src/hooks/auth/context/AuthContext';
 
 import Form from '@Components/form';
@@ -10,6 +12,10 @@ const Signup = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>회원가입</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="login">
         <Form
           isLogin={false}
