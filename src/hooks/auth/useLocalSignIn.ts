@@ -28,7 +28,16 @@ const useLocalSignIn = (
         router.push('/');
       }
     } catch (error) {
-      setErrorMsg('유저 이름 또는 비밀번호가 잘못됐습니다.');
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          if (error.response.status === 401) {
+            setErrorMsg('사용자가 존재하지않습니다.');
+            return;
+          }
+          const { data } = error.response;
+          if (typeof data === 'string') setErrorMsg(data);
+        }
+      }
     }
   };
   return { handleSignIn, errorMsg };

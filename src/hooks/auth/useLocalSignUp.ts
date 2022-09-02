@@ -25,8 +25,8 @@ const useLocalSignUp = () => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response) {
-          const { data } = error.response as any;
-          setErrorMsg(data);
+          const { data } = error.response;
+          if (typeof data === 'string') setErrorMsg(data);
         }
       }
     }
