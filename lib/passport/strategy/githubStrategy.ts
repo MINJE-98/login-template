@@ -15,11 +15,12 @@ const githubStrategy = new GitHubStrategy(
   {
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: `${SERVER_URL}/api/github/callback`,
+    callbackURL: `${SERVER_URL}/api/oauth/github/callback`,
   },
   async (_accessToken, _refreshToken, profile, done) => {
     const db = await getMongoDb();
-    const { username } = profile;
+    const { username, provider } = profile;
+
     if (!username) {
       done(null, false);
       return;
@@ -31,7 +32,7 @@ const githubStrategy = new GitHubStrategy(
       return;
     }
     const newUserInfo: CreateUserInterface = {
-      provider: 'github',
+      provider,
       username,
     };
     const createdUser = await createUser(db, newUserInfo);
