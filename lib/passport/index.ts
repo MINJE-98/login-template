@@ -4,6 +4,7 @@ import passport from 'passport';
 
 import { findUserWithUserId } from '@Lib/db/findUser';
 import { getMongoDb } from '@Lib/db/mongoClient';
+import githubStrategy from '@Lib/passport/strategy/githubStrategy';
 import localStrategy from '@Lib/passport/strategy/localStrategy';
 
 import UserInterface from '@Lib/db/interface/UserInterface';
@@ -19,5 +20,6 @@ passport.deserializeUser(async (user: UserInterface, done) => {
 });
 
 passport.use(localStrategy);
+passport.use(githubStrategy);
 
 export default passport;
