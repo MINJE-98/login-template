@@ -19,7 +19,9 @@ const SignIn = () => {
       </div>
       <SNSLoginButton strategy="github">깃허브로 로그인하기!</SNSLoginButton>
       <SNSLoginButton strategy="kakao">카카오로 로그인하기!</SNSLoginButton>
-      <SNSLoginButton strategy="google">구글로 로그인하기!</SNSLoginButton>
+      <SNSLoginButton strategy="facebook">
+        페이스북으로 로그인하기!
+      </SNSLoginButton>
       <style jsx>{`
         .login {
           max-width: 21rem;
