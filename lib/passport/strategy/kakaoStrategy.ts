@@ -20,15 +20,15 @@ const kakaoStrategy = new Strategy(
       done(null, false);
       return;
     }
-
-    const finnedUser = await findUser(db, username);
+    const strategyUserName = `${provider} ${username}`;
+    const finnedUser = await findUser(db, strategyUserName);
     if (finnedUser) {
       done(null, finnedUser);
       return;
     }
     const newUserInfo: CreateUserInterface = {
       provider,
-      username,
+      username: strategyUserName,
     };
     const createdUser = await createUser(db, newUserInfo);
     done(null, createdUser);
