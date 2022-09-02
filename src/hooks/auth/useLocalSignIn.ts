@@ -5,12 +5,12 @@ import axios from 'axios';
 
 import UserInterface from '@Lib/db/interface/UserInterface';
 
-const useLocalLogin = (
+const useLocalSignIn = (
   setUserInfo: Dispatch<SetStateAction<UserInterface | null>>
 ) => {
   const router = useRouter();
   const [errorMsg, setErrorMsg] = useState('');
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (errorMsg) setErrorMsg('');
@@ -31,7 +31,7 @@ const useLocalLogin = (
       setErrorMsg('유저 이름 또는 비밀번호가 잘못됐습니다.');
     }
   };
-  return { handleLogin, errorMsg };
+  return { handleSignIn, errorMsg };
 };
 
-export default useLocalLogin;
+export default useLocalSignIn;
