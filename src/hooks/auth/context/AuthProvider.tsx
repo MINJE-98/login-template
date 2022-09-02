@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { ReactNode, useState } from 'react';
 
 import axios from 'axios';
-import { AuthContext } from 'src/hooks/auth/AuthContext';
-import useLocalLogin from 'src/hooks/auth/useLocalLogin';
+import { AuthContext } from 'src/hooks/auth/context/AuthContext';
+import useLocalSignIn from 'src/hooks/auth/useLocalSignIn';
+import useLocalSignUp from 'src/hooks/auth/useLocalSignUp';
 
 import UserInterface from '@Lib/db/interface/UserInterface';
 
@@ -16,7 +17,8 @@ const AuthProvider = ({ children, initUserInfo }: AuthProviderProps) => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useState<UserInterface | null>(initUserInfo);
 
-  const localLogin = useLocalLogin(setUserInfo);
+  const localSignIn = useLocalSignIn(setUserInfo);
+  const LocalSignUp = useLocalSignUp();
   const handleLogout = async () => {
     await axios.get('/api/signout');
     router.push('/signin');
@@ -27,7 +29,8 @@ const AuthProvider = ({ children, initUserInfo }: AuthProviderProps) => {
     <AuthContext.Provider
       value={{
         userInfo,
-        localLogin,
+        localSignIn,
+        LocalSignUp,
         handleLogout,
       }}
     >

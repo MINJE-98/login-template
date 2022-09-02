@@ -1,11 +1,15 @@
 import { createContext, useContext } from 'react';
 
-import AuthContextInterface from 'src/hooks/auth/interface/authContextInterface';
+import AuthContextInterface from 'src/hooks/auth/context/interface/authContextInterface';
 
 const AuthContext = createContext<AuthContextInterface>({
   userInfo: null,
-  localLogin: {
-    handleLogin: () => null,
+  localSignIn: {
+    handleSignIn: () => null,
+    errorMsg: '',
+  },
+  LocalSignUp: {
+    handleSignUp: () => null,
     errorMsg: '',
   },
   handleLogout: () => null,
