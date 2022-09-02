@@ -1,40 +1,12 @@
-/* eslint-disable react/jsx-no-bind */
-import Router from 'next/router';
-import { useState } from 'react';
-
-import axios from 'axios';
+import { useAuth } from 'src/hooks/auth/context/AuthContext';
 
 import Form from '@Components/form';
 import Layout from '@Components/layout';
 
 const Signup = () => {
-  const [errorMsg, setErrorMsg] = useState('');
-
-  async function handleSubmit(e: any) {
-    e.preventDefault();
-
-    if (errorMsg) setErrorMsg('');
-
-    const body = {
-      username: e.currentTarget.username.value,
-      password: e.currentTarget.password.value,
-      rpassword: e.currentTarget.rpassword.value,
-    };
-
-    try {
-      const result = await axios.post('/api/signup', body);
-      if (result.status === 200) {
-        Router.push('/');
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          const { data } = error.response as any;
-          setErrorMsg(data);
-        }
-      }
-    }
-  }
+  const {
+    LocalSignUp: { errorMsg, handleSignUp },
+  } = useAuth();
 
   return (
     <Layout>
@@ -42,7 +14,7 @@ const Signup = () => {
         <Form
           isLogin={false}
           errorMessage={errorMsg}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleSignUp}
         />
       </div>
       <style jsx>{`
