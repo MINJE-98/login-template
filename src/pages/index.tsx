@@ -5,13 +5,17 @@ import Head from 'next/head';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import withAuthServerSideProps from 'src/hocs/withAuthGetServerSideProps';
-import { useAuth } from 'src/hooks/auth/AuthContext';
+import { useAuth } from 'src/hooks/auth/context/AuthContext';
 
 import styles from '../../styles/Home.module.css';
 
 const Home: NextPage = () => {
   const { userInfo, handleLogout } = useAuth();
-  const result = useQuery('userInfo', () => axios.get('/api/user'));
+  const result = useQuery('userInfo', () => axios.get('/api/user'), {
+    retry: false,
+    refetchOnWindowFocus: false,
+    cacheTime: 0,
+  });
 
   return (
     <div className={styles.container}>
