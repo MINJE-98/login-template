@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import nextConnect from 'next-connect';
 
-import createUser from '@Lib/db/createUser';
+import { createLocalUser } from '@Lib/db/createUser';
 import { findUser } from '@Lib/db/findUser';
 import { getMongoDb } from '@Lib/db/mongoClient';
 import auth from '@Lib/middleware/auth';
@@ -29,7 +29,7 @@ handler.use(auth).post(async (req: NextApiRequest, res: NextApiResponse) => {
   if (password !== rpassword) {
     return res.status(409).send('비밀번호가 일치하지 않습니다.');
   }
-  createUser(db, user);
+  createLocalUser(db, user);
   return res.json({ user });
 });
 
