@@ -18,6 +18,7 @@ const SignIn = () => {
         <Form isLogin errorMessage={errorMsg} handleSubmit={handleSignIn} />
       </div>
       <SNSLoginButton strategy="github">깃허브로 로그인하기!</SNSLoginButton>
+      <SNSLoginButton strategy="kakao">카카오로 로그인하기!</SNSLoginButton>
       <style jsx>{`
         .login {
           max-width: 21rem;
