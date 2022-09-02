@@ -3,3 +3,4 @@ export * from './server';
 export * from './github';
 export * from './kakao';
 export * from './google';
+export * from './facebook';
