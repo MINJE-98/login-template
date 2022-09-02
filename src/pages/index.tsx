@@ -26,6 +26,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <h3>Provider: {userInfo?.provider}</h3>
         <h1 className={styles.title}>ServerSide</h1>
         <h3>🙃Welcome {userInfo && userInfo.username}🙃</h3>
         <h1 className={styles.title}>ClientSide</h1>
@@ -44,5 +45,4 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
 export const getServerSideProps: GetServerSideProps = withAuthServerSideProps();
