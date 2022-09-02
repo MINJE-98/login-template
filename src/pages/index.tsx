@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>LoginTemplate</title>
+        <title>🙃Welcome {userInfo && userInfo.username}🙃</title>
         <meta
           name="description"
           content="passport로 Session을 이용한 로그인 구현"
