@@ -7,6 +7,7 @@ import { getMongoDb } from '@Lib/db/mongoClient';
 import UserInterface from '@Lib/db/interface/UserInterface';
 
 function validatePassword(user: UserInterface, inputPassword: string) {
+  if (!user.salt) return false;
   const inputHash = crypto
     .pbkdf2Sync(inputPassword, user.salt, 1000, 64, 'sha512')
     .toString('hex');
