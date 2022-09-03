@@ -17,11 +17,11 @@
 .button-link button {
   margin-top: 20px;
   margin-bottom: 15px;
-  background: #161616;
+  background: black;
 }
 
 .button-link button:hover {
-  background: #585858;
+  background: #262626;
 }
 
 .button-link a {
@@ -33,11 +33,14 @@
   text-decoration: underline;
 }
 
+.oauth-button {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   .form {
     background-color: #131313;
-  }
-  .button-link button {
-    background-color: #292929;
   }
 }

@@ -1,5 +1,6 @@
+import OauthDivider from '@Components/common/atoms/Divider/OauthDivider';
 import LinkTo from '@Components/common/atoms/LinkTo';
-import LoginButton from '@Components/common/atoms/LoginButton';
+import FacebookLoginButton from '@Components/common/molecules/Button/FacebookLoginButton';
 import GithubLoginButton from '@Components/common/molecules/Button/GithubLoginButton';
 import KakaoLoginButton from '@Components/common/molecules/Button/KakaoLoginButton';
 import StyledInputLabel from '@Components/common/molecules/Form/StyledInputLabel';
@@ -9,7 +10,7 @@ import styles from './Form.module.css';
 const Form = ({ isLogin, errorMessage, handleSubmit }: any) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      {isLogin ? <h2>로그인</h2> : <h2>회원가입</h2>}
+      {isLogin ? <h2>환영합니다!</h2> : <h2>회원가입</h2>}
       <StyledInputLabel labelText="이름" type="text" name="username" required />
       <StyledInputLabel
         labelText="비밀번호"
@@ -39,14 +40,12 @@ const Form = ({ isLogin, errorMessage, handleSubmit }: any) => {
           </>
         )}
       </div>
-      <hr
-        style={{
-          color: 'black',
-          width: '100%',
-        }}
-      />
-      <GithubLoginButton />
-      <KakaoLoginButton />
+      <OauthDivider />
+      <div className={styles['oauth-button']}>
+        <GithubLoginButton />
+        <KakaoLoginButton />
+        <FacebookLoginButton />
+      </div>
     </form>
   );
 };

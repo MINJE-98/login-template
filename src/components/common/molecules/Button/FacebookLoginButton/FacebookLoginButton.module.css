@@ -1,18 +1,21 @@
-.github-login {
-  background: black;
+.facebook-login {
+  background: #3b5998;
   display: flex;
   padding: 0.6rem;
   align-items: center;
   justify-content: center;
 }
 
-.github-login span {
+.facebook-login span {
   color: white;
   font-size: 18px;
   font-weight: 400;
   margin-left: 15px;
 }
+.facebook-login svg {
+  margin-left: 20px;
+}
 
-.github-login:hover {
-  background: #262626;
+.facebook-login:hover {
+  background: #4a6294;
 }
