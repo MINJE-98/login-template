@@ -28,7 +28,6 @@
     "@typescript-eslint/lines-between-class-members": "off",
     "class-methods-use-this": "off",
     "react/no-unused-prop-types": "off",
-    "@typescript-eslint/no-unused-vars": "off",
     "import/order": [
       "error",
       {
