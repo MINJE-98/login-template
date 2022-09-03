@@ -1,4 +1,4 @@
-import LinkTo from '@Components/LinkTo';
+import LinkTo from '@Components/common/atoms/LinkTo';
 
 const SNSLoginButton = ({ children, strategy }: any) => {
   return (
