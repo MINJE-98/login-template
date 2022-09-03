@@ -17,9 +17,8 @@ const SignIn = () => {
         <title>로그인</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="login">
-        <Form isLogin errorMessage={errorMsg} handleSubmit={handleSignIn} />
-      </div>
+
+      <Form isLogin errorMessage={errorMsg} handleSubmit={handleSignIn} />
     </main>
   );
 };
