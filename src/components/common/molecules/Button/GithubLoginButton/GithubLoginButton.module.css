@@ -1,0 +1,18 @@
+.github-login {
+  background: #161616;
+  display: flex;
+  padding: 0.6rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-login span {
+  color: white;
+  font-size: 18px;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.github-login:hover {
+  background: #585858;
+}

@@ -1,4 +1,7 @@
 import LinkTo from '@Components/common/atoms/LinkTo';
+import LoginButton from '@Components/common/atoms/LoginButton';
+import GithubLoginButton from '@Components/common/molecules/Button/GithubLoginButton';
+import KakaoLoginButton from '@Components/common/molecules/Button/KakaoLoginButton';
 import StyledInputLabel from '@Components/common/molecules/Form/StyledInputLabel';
 
 import styles from './Form.module.css';
@@ -36,6 +39,14 @@ const Form = ({ isLogin, errorMessage, handleSubmit }: any) => {
           </>
         )}
       </div>
+      <hr
+        style={{
+          color: 'black',
+          width: '100%',
+        }}
+      />
+      <GithubLoginButton />
+      <KakaoLoginButton />
     </form>
   );
 };

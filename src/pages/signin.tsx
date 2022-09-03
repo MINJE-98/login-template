@@ -6,6 +6,7 @@ import { useAuth } from 'src/hooks/auth/context/AuthContext';
 
 import Form from '@Components/common/organisms/Form';
 import { SERVER_URL } from '@Environment';
+import LoginButton from '@Components/common/atoms/LoginButton';
 
 const SignIn = () => {
   const {

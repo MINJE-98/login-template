@@ -1,0 +1,18 @@
+.kakao-login {
+  background: #ffe812;
+  display: flex;
+  padding: 0.6rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.kakao-login span {
+  color: black;
+  font-size: 18px;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.kakao-login:hover {
+  background: #ffe927;
+}
