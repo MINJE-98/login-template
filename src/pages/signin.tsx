@@ -4,9 +4,7 @@ import Head from 'next/head';
 import axios from 'axios';
 import { useAuth } from 'src/hooks/auth/context/AuthContext';
 
-import Form from '@Components/form';
-import Layout from '@Components/layout';
-import SNSLoginButton from '@Components/SNSLoginButton';
+import Form from '@Components/common/organisms/Form';
 import { SERVER_URL } from '@Environment';
 
 const SignIn = () => {
@@ -14,7 +12,7 @@ const SignIn = () => {
     localSignIn: { errorMsg, handleSignIn },
   } = useAuth();
   return (
-    <Layout>
+    <main>
       <Head>
         <title>로그인</title>
         <link rel="icon" href="/favicon.ico" />
@@ -22,12 +20,12 @@ const SignIn = () => {
       <div className="login">
         <Form isLogin errorMessage={errorMsg} handleSubmit={handleSignIn} />
       </div>
-      <SNSLoginButton strategy="github">깃허브로 로그인하기!</SNSLoginButton>
+      {/* <SNSLoginButton strategy="github">깃허브로 로그인하기!</SNSLoginButton>
       <SNSLoginButton strategy="kakao">카카오로 로그인하기!</SNSLoginButton>
       <SNSLoginButton strategy="facebook">
         페이스북으로 로그인하기!
-      </SNSLoginButton>
-      <style jsx>{`
+      </SNSLoginButton> */}
+      {/* <style jsx>{`
         .login {
           max-width: 21rem;
           margin: 0 auto;
@@ -35,8 +33,8 @@ const SignIn = () => {
           border: 1px solid #ccc;
           border-radius: 4px;
         }
-      `}</style>
-    </Layout>
+      `}</style> */}
+    </main>
   );
 };
 
