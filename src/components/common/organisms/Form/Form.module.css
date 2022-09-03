@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 50px 30px;
+  background-color: white;
+  border: rgba(0, 0, 0);
+  border-width: 1px;
+}
+
+.error-message {
+  color: #f43f5d;
+  height: 1rem;
+}
+
+.button-link button {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background: #161616;
+}
+
+.button-link button:hover {
+  background: #585858;
+}
+
+.button-link a {
+  font-size: 15px;
+  color: #cbcbcb;
+}
+.button-link a:hover {
+  color: #9d9d9d;
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .form {
+    background-color: #131313;
+  }
+  .button-link button {
+    background-color: #292929;
+  }
+}
