@@ -1,7 +1,13 @@
+import Image from 'next/image';
+import loginflow1 from '../../public/loginflow1.png';
+import loginflow2 from '../../public/loginflow2.png';
+
 const Pihp = () => {
   return (
     <div>
-      <p> </p>
+      <Image src={loginflow1} />
+      <Image src={loginflow2} />
+      {/* <p> </p>
       <p className="ls2 lh6 bs5 ts4">
         <em className="emphasis">
           ` login-template `(`https://login-template-one.vercel.app/`이하
@@ -301,7 +307,7 @@ const Pihp = () => {
         <p className="sub_p">예시 ) - 20XX. X. X ~ 20XX. X. X 적용 (클릭) </p>
         <p className="sub_p">예시 ) - 20XX. X. X ~ 20XX. X. X 적용 (클릭) </p>
         <p className="sub_p">예시 ) - 20XX. X. X ~ 20XX. X. X 적용 (클릭)</p>
-      </em>
+      </em> */}
     </div>
   );
 };
