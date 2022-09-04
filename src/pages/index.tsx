@@ -39,8 +39,8 @@ const Home: NextPage = () => {
             <>🙃Welcome {result.data && result.data.data.user.username}🙃</>
           )}
         </h3>
-        <button type="button" onClick={handleLogout} className={styles.card}>
-          <h4>로그아웃</h4>
+        <button type="button" onClick={handleLogout} className={styles.button}>
+          로그아웃
         </button>
       </main>
     </div>
