@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import loginflow1 from '../../public/loginflow1.png';
 import loginflow2 from '../../public/loginflow2.png';
 
