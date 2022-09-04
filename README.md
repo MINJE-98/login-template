@@ -156,6 +156,20 @@ Airbnb룰 준수
 
 ![frontend](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
 
+# 마무리
+
+## JWT로 인증 구현은 힘드나?
+
+현재 TILog에서 JWT로만 인증을 구현하고 있다. 현재 해당 레포에서 구현한 방법과 크게 달라지는 부분은 없다.
+
+또 NextJS에서 RefreshToken과 사용자 정보를 Session에 저장하고, 클라이언트에게 세션쿠키형태로 전달한다음 NextJS에서 인가를 처리하는 방법도 있는 것 같았다.
+
+## 나의 생각
+
+이번 인증을 구현하면서 많은 고민과 시간을 사용하여 구현했다. 하지만 인증은 결국 "구현하기 나름"이라는 생각이 들었다.
+
+그리고 거의 대부분의 NextJS관련 모듈을 보면 BFF가 아닌 NextJS를 사용하여 풀스택을 구현하고 있는데, 아직까지 왜 그렇게 구현하는지 정확한 이유는 모르겠다.
+
 # 참고
 
 https://hygraph.com/blog/nextjs-authentication
