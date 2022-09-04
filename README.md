@@ -1,27 +1,33 @@
 # 개요
 
-NextJS에서 "SSR, CSR를 사용하여 어떻게 사용자에게 좀 더 좋은 사용경험을 줄 수 있을까?" 라는 고민을 각 페이지 별로 적용해보고 상황에 맞게 로그인을 구현할 수 있도록 경험을 키우기 위한 레포지토리입니다.
+NextJS에서 Session을 이용하여 로그인을 구현합니다.
 
 # 설명
 
-로그인 API EndPoint는 모두 NextJS의 Express를 사용합니다.
+DataBase MongoDB, NextJS를 사용하여 서버, 클라이언트를 구현하였습니다.
 
-## PassPost
+인증 모듈은 PassportJS를 사용하며, Next-Session(Peer | Express-Session)을 사용하여 세션을 생성하여 쿠키에 저장합니다. (로컬, 카카오, 깃허브, 페이스북 인증으로 구성되어있습니다.)
 
-PassPort의 대부분의 로직은 [예제 코드](https://github.com/vercel/next.js/tree/canary/examples/with-passport)를 참고하여 구현하였습니다.
+클라이언트측에서 DataFetching 메서드를 통해 미리 HTML파일을 렌더링(SSR)하는 방법과 클라이언트측에서 렌더링(CSR)하는 방법을 하나의 페이지에 구현하였습니다.
+
+컴포넌트는 [컴포넌트 분리 기준 정하기](https://tilog.io/MINJE-98/72)를 준수하여 컴포넌트를 구성하였으며, CreateNextJS에서 제공하는 CssModules을 사용하여 스타일하였습니다.
 
 ## 기본 라이브러리
 
-| 이름         | 버전        |
-| ------------ | ----------- |
-| node         | **16.17.0** |
-| typescript   | **4.8.2**   |
-| next         | **12.2.5**  |
-| react        | **18.2.0**  |
-| react-dom    | **18.2.0**  |
-| next-connect | **^0.13.0** |
+| 이름          | 버전        |
+| ------------- | ----------- |
+| node          | **16.17.0** |
+| typescript    | **4.8.2**   |
+| next          | **12.2.5**  |
+| react         | **18.2.0**  |
+| react-dom     | **18.2.0**  |
+| next-connect  | **^0.13.0** |
+| mongodb       | **4.9.0**   |
+| connect-mongo | **^4.6.0**  |
 
 ## 코드 포멧터
+
+코드 포멧터를 이용하여 모든 코드에서 동일한 코드 포멧 및 컨벤션을 유지합니다.
 
 | 이름                             | 버전        |
 | -------------------------------- | ----------- |
@@ -39,45 +45,36 @@ PassPort의 대부분의 로직은 [예제 코드](https://github.com/vercel/nex
 
 ## 인증
 
-| 이름            | 버전        |
-| --------------- | ----------- |
-| next-session    | **^4.0.5**  |
-| express-session | **^1.17.3** |
-| cookie          | **^0.5.0**  |
-| passport        | **0.5.0**   |
-| passport-local  | **1.0.0**   |
-| mongodb         | **4.9.0**   |
-| connect-mongo   | **^4.6.0**  |
+| 이름              | 버전        |
+| ----------------- | ----------- |
+| next-session      | **^4.0.5**  |
+| express-session   | **^1.17.3** |
+| cookie            | **^0.5.0**  |
+| passport          | **0.5.0**   |
+| passport-local    | **1.0.0**   |
+| passport-facebook | **^3.0.0**  |
+| passport-github   | **^1.1.0**  |
+| passport-kakao    | **^1.0.1**  |
 
-## 서버 상태
+## 서버 상태 피처
 
 | 이름        | 버전        |
 | ----------- | ----------- |
-| axios       | **^0.27.2** |
 | react-query | **3.39.2**  |
+| axios       | **^0.27.2** |
 
-## 암호
-
-| 이름       | 버전       |
-| ---------- | ---------- |
-| @hapi/iron | **^7.0.0** |
-
-# 구현
-
-## ServerSide
-
-로딩을 제거하고 pre-render를 통해 인증된 페이지와 인증되지 않은 페이지를 바로 사용자에게 서빙하는 방법을 적용해보자.
+## 로그인 플로우
 
 ### 로그인 플로우
 
-![Client-side Authentication](https://media.graphcms.com/Hu6FlVFSSpanSFdinFvF)
+![로그인 플로우](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow1.0893af26.png&w=1200&q=75)
 
-## ClientSide
+![로그인 플로우](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
 
-로딩을 통해 사용자의 인증 상태를 확인하고, 확인된 사용자의 정보에 따라 페이지를 서빙하는 방법을 적용해보자.
+# 참고
 
-### 로그인 플로우
+https://hygraph.com/blog/nextjs-authentication
 
-![Server-side Authentication](https://media.graphcms.com/gSzIoRgtQ1y2x5CCRatb)
+https://github.com/hoangvvo/nextjs-mongodb-app/blob/v2/pages/api/auth.js
 
-# 결론
+https://github.com/vercel/next.js/tree/canary/examples/with-passport-and-next-connect
