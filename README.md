@@ -1,18 +1,65 @@
-# 개요
+# 소개
 
-NextJS에서 Session을 이용하여 로그인을 구현합니다.
+세션을 이용하여 NextJS에서 로그인을 구현합니다.
+SSR과 CSR을 하나의 페이지에서 구현하고 어떻게 사용자에게 보여지는지 알아봅니다.
+구현경험을 통해 필요한 구현 방법을 상황에 맞게 적용할 수 있는 역량을 키우는 것이 목표입니다.
 
-# 설명
+## 데모
 
-DataBase MongoDB, NextJS를 사용하여 서버, 클라이언트를 구현하였습니다.
+https://login-template-one.vercel.app/
 
-인증 모듈은 PassportJS를 사용하며, Next-Session(Peer | Express-Session)을 사용하여 세션을 생성하여 쿠키에 저장합니다. (로컬, 카카오, 깃허브, 페이스북 인증으로 구성되어있습니다.)
+# 프로젝트 시작 방법
 
-클라이언트측에서 DataFetching 메서드를 통해 미리 HTML파일을 렌더링(SSR)하는 방법과 클라이언트측에서 렌더링(CSR)하는 방법을 하나의 페이지에 구현하였습니다.
+## 프로젝트 클론
 
-컴포넌트는 [컴포넌트 분리 기준 정하기](https://tilog.io/MINJE-98/72)를 준수하여 컴포넌트를 구성하였으며, CreateNextJS에서 제공하는 CssModules을 사용하여 스타일하였습니다.
+```
+git clone https://github.com/MINJE-98/login-template
+```
 
-## 기본 라이브러리
+## 의존성 설치
+
+```
+  cd login-template
+  yarn install
+```
+
+## mongoDB 설정 및 클러스터 생성
+
+https://www.youtube.com/watch?v=rPqRyYJmx2g
+
+> 클러스터의 collection은 따로 추가하지 않아도 됩니다.
+
+## 환경 변수 작성
+
+```
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+KAKAO_CLIENT_ID=
+FACEBOOK_CLIENT_ID=
+FACEBOOK_CLIENT_SECRET=
+
+MONGODB_URI=
+```
+
+## 프로젝트 시작
+
+```
+yarn dev
+```
+
+## 프로젝트 빌드
+
+배포 서버 URL 환경변수 추가
+
+```
+NEXT_PUBLIC_SERVER_URL= https://login-template-one.vercel.app/
+```
+
+```
+yarn build
+```
+
+# 기술 스택
 
 | 이름          | 버전        |
 | ------------- | ----------- |
@@ -24,52 +71,88 @@ DataBase MongoDB, NextJS를 사용하여 서버, 클라이언트를 구현하였
 | next-connect  | **^0.13.0** |
 | mongodb       | **4.9.0**   |
 | connect-mongo | **^4.6.0**  |
+| axios         | **^0.27.2** |
+| next-session  | **^4.0.5**  |
+| passport      | **0.5.0**   |
+| react-query   | **3.39.2**  |
 
-## 코드 포멧터
+# 구현 범위
 
-코드 포멧터를 이용하여 모든 코드에서 동일한 코드 포멧 및 컨벤션을 유지합니다.
+## /index
 
-| 이름                             | 버전        |
-| -------------------------------- | ----------- |
-| eslint-config-next               | **^12.2.5** |
-| eslint                           | **8.23.0**  |
-| @typescript-eslint/eslint-plugin | **^5.36.1** |
-| @typescript-eslint/parser        | **^5.36.1** |
-| prettier                         | **^2.7.1**  |
-| eslint-plugin-react              | **^7.31.1** |
-| eslint-plugin-prettier           | **^4.2.1**  |
-| eslint-plugin-import             | **^2.26.0** |
-| eslint-config-prettier           | **^8.5.0**  |
-| eslint-config-airbnb             | **^19.0.4** |
-| eslint-config-airbnb-typescript  | **^17.0.0** |
+로그인된 사용자를 표시합니다.
+DataFetching 메서드를 통해 미리 HTML파일을 렌더링(SSR), 클라이언트측에서 렌더링(CSR)을 하나의 페이지에 구현하였습니다.
 
-## 인증
+## /signin
 
-| 이름              | 버전        |
-| ----------------- | ----------- |
-| next-session      | **^4.0.5**  |
-| express-session   | **^1.17.3** |
-| cookie            | **^0.5.0**  |
-| passport          | **0.5.0**   |
-| passport-local    | **1.0.0**   |
-| passport-facebook | **^3.0.0**  |
-| passport-github   | **^1.1.0**  |
-| passport-kakao    | **^1.0.1**  |
+로그인페이지
 
-## 서버 상태 피처
+## /signup
 
-| 이름        | 버전        |
-| ----------- | ----------- |
-| react-query | **3.39.2**  |
-| axios       | **^0.27.2** |
+회원가입 페이지
+
+# 폴더 구조
+
+```
+.
+├── environment
+├── lib
+│   ├── db
+│   ├──  middleware
+│   ├── passport
+│   └──session
+├── src
+│   ├── components
+│   ├── hooks
+│   └── pages
+└── ...
+```
+
+# 빌드 도구
+
+## 번들러
+
+WebPack(default)
+
+<!-- 만약 추가 설정이나, 다른 번들러를 사용했다면 추가적으로 작성하자. -->
+
+## 트렌스파일러
+
+SWC(default)
+
+<!-- 만약 추가 설정이나, 다른 트랜스파일러를 사용했다면 추가적으로 작성하자. -->
+
+# 코드 컨벤션
+
+<!-- github, 패키지 관리, 컴포넌트 관리, 네이밍 컨벤션, Typescript 작성해야합니다! -->
+
+## eslint
+
+Airbnb룰 준수
+
+## 룰
+
+<!-- 추가된 룰이 있다면 반드시 작성 -->
+
+### import
+
+- order
+
+  next, react 모듈 -> 외부 모듈 -> 내부 모듈 -> 타입
+
+- prefer-default-export
+
+  단일 메서드 export off
 
 ## 로그인 플로우
 
-### 로그인 플로우
+### Backend
 
-![로그인 플로우](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow1.0893af26.png&w=1200&q=75)
+![backend](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow1.0893af26.png&w=1200&q=75)
 
-![로그인 플로우](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
+### Frontend
+
+![frontend](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
 
 # 참고
 
