@@ -156,9 +156,15 @@ Airbnb룰 준수
 
 ![frontend](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
 
-# 마무리
+# 키울 수 있었는 역량
 
-서버측에서 미리 유저 정보를 포함하여 HTML을 만들게 되면 모든 페이지에 getServerSideProps 또는 getInitialProps를 사용해야한다. 그렇다는 건 굳이 SSR을 적용하지 않아도 되는 페이지도 모두 SSR이 적용되는 것인데 이러한 부분을 생각해보면 유저 관련 데이터는 클라이언트에서 요청하는게 나아보인다.
+## 요구사항별로 구현이 달라질 수 있다.
+요구사항에 맞게 유저 정보를 사전렌더링할지를 결정하는 것이 바람직하다.
+
+Server Side DataFetching를 통해 SEO만 적용하는경우가 존재하고
+
+미리 로그인된 유저 정보를 통해 사전렌더링을 적용해야하는 경우도 존재한다.
+
 
 # 참고
 
