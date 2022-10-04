@@ -156,7 +156,7 @@ Airbnb룰 준수
 
 ![frontend](https://login-template-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Floginflow2.661351cf.png&w=1080&q=75)
 
-# 키울 수 있었는 역량
+# 프로젝트를 진행하고 알 수 있었던 부분
 
 ## 요구사항별로 구현이 달라질 수 있다.
 요구사항에 맞게 유저 정보를 사전렌더링할지를 결정하는 것이 바람직하다.
